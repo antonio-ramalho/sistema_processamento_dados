@@ -13,7 +13,6 @@ public class FileDownloadUtil {
             while ((len = in.read(buffer)) != -1) {
                 out.write(buffer, 0, len);
             }
-            System.out.println("Download completado com sucesso!");
         }
         catch (Exception e) {
             throw new DomainException("Não foi possível fazer o download do arquivo: " + file);
