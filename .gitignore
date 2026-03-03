@@ -44,6 +44,10 @@ build/
 # Configurações do IntelliJ IDEA
 .idea/
 
+# Configurações das pastas criadas
+dados_brutos/
+dados_processados/
+
 # Arquivos compilados Java
 *.class
 *.jar
