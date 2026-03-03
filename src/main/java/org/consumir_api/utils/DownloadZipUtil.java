@@ -1,0 +1,22 @@
+package org.consumir_api.utils;
+
+import org.consumir_api.exceptions.DomainException;
+import java.io.FileOutputStream;
+import java.io.InputStream;
+
+public class DownloadZipUtil {
+
+    public static void download(InputStream in, String pathName, String file) {
+        try (FileOutputStream out = new FileOutputStream(pathName + file)) {
+            byte[] buffer = new byte[1024];
+            int len;
+            while ((len = in.read(buffer)) != -1) {
+                out.write(buffer, 0, len);
+            }
+            System.out.println("Download completado com sucesso!");
+        }
+        catch (Exception e) {
+            throw new DomainException("Não foi possível fazer o download do arquivo: " + file);
+        }
+    }
+}
