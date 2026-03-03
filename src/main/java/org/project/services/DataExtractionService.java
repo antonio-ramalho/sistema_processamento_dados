@@ -1,8 +1,8 @@
-package org.consumir_api.services;
+package org.project.services;
 
-import org.consumir_api.infrastructure.WebClient;
-import org.consumir_api.utils.CreateDirectoriesUtil;
-import org.consumir_api.utils.DownloadZipUtil;
+import org.project.infrastructure.WebClient;
+import org.project.utils.CreateDirectoriesUtil;
+import org.project.utils.DownloadZipUtil;
 
 import java.io.BufferedInputStream;
 

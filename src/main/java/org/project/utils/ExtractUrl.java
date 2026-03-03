@@ -1,4 +1,4 @@
-package org.consumir_api.utils;
+package org.project.utils;
 
 import org.jsoup.nodes.Element;
 

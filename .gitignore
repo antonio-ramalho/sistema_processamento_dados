@@ -37,3 +37,17 @@ build/
 
 ### Mac OS ###
 .DS_Store
+
+# Pasta de build do Maven/Gradle
+.gradle/
+
+# Configurações do IntelliJ IDEA
+.idea/
+
+# Arquivos compilados Java
+*.class
+*.jar
+*.war
+
+# Arquivos de sistema e logs
+*.log

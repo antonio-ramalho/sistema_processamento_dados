@@ -1,4 +1,4 @@
-package org.consumir_api.exceptions;
+package org.project.exceptions;
 
 public class DomainException extends RuntimeException {
     public DomainException(String message) {

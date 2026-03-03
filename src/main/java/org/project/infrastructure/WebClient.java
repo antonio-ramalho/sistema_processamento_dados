@@ -1,7 +1,7 @@
-package org.consumir_api.infrastructure;
+package org.project.infrastructure;
 
-import org.consumir_api.exceptions.DomainException;
-import org.consumir_api.utils.ConnectWebUtil;
+import org.project.exceptions.DomainException;
+import org.project.utils.ConnectWebUtil;
 import org.jsoup.Connection;
 import org.jsoup.nodes.Document;
 

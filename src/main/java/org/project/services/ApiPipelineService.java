@@ -1,7 +1,7 @@
-package org.consumir_api.services;
+package org.project.services;
 
-import org.consumir_api.infrastructure.WebClient;
-import org.consumir_api.utils.ExtractUrl;
+import org.project.infrastructure.WebClient;
+import org.project.utils.ExtractUrl;
 import org.jsoup.nodes.Element;
 
 public class ApiPipelineService {

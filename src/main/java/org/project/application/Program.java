@@ -1,9 +1,9 @@
-package org.consumir_api.application;
+package org.project.application;
 
-import org.consumir_api.infrastructure.WebClient;
-import org.consumir_api.services.DataExtractionService;
-import org.consumir_api.utils.CreateDirectoriesUtil;
-import org.consumir_api.utils.ExtractUrl;
+import org.project.infrastructure.WebClient;
+import org.project.services.DataExtractionService;
+import org.project.utils.CreateDirectoriesUtil;
+import org.project.utils.ExtractUrl;
 import org.jsoup.nodes.Element;
 
 import java.util.Scanner;

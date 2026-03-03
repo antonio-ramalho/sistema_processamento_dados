@@ -1,6 +1,6 @@
-package org.consumir_api.utils;
+package org.project.utils;
 
-import org.consumir_api.exceptions.DomainException;
+import org.project.exceptions.DomainException;
 
 import java.nio.file.Files;
 import java.nio.file.Path;
