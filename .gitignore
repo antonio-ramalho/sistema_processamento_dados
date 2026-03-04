@@ -47,6 +47,8 @@ build/
 # Configurações das pastas criadas
 dados_brutos/
 dados_processados/
+consumir_api.iml
+pom.xml
 
 # Arquivos compilados Java
 *.class
