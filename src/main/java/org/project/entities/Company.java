@@ -10,7 +10,7 @@ public class Company {
     private String uf;
     private String modality;
 
-    List <String> despesas = new ArrayList();
+    private List <Expense> despesas = new ArrayList();
 
     public Company() {}
 
@@ -22,8 +22,12 @@ public class Company {
         this.uf = uf;
     }
 
-    public String getCompanyName() {
-        return companyName;
+    public void addDespesa(Expense despesa) {
+        this.despesas.add(despesa);
+    }
+
+    public List<Expense> getDespesas() {
+        return despesas;
     }
 
     public static String formatString(String fdf) {
@@ -32,42 +36,6 @@ public class Company {
             companyString = fdf.substring(0, fdf.length() - 1);
         }
         return companyString.toUpperCase().replaceAll("\"", "");
-    }
-
-    public static boolean validateCnpj(String cnpj) {
-        if (cnpj == null) return false;
-
-        cnpj = cnpj.replaceAll("\\D", "");
-
-        if (cnpj.length() != 14 || cnpj.matches("(\\d)\\1{13}")) {
-            return false;
-        }
-
-        try {
-            int[] pesos1 = {5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2};
-            int[] pesos2 = {6, 5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2};
-
-            int soma = 0;
-            for (int i = 0; i < 12; i++) {
-                soma += Character.getNumericValue(cnpj.charAt(i)) * pesos1[i];
-            }
-            int resto = soma % 11;
-            int digito1 = (resto < 2) ? 0 : 11 - resto;
-
-            soma = 0;
-            for (int i = 0; i < 13; i++) {
-                int num = (i < 12) ? Character.getNumericValue(cnpj.charAt(i)) : digito1;
-                soma += num * pesos2[i];
-            }
-            resto = soma % 11;
-            int digito2 = (resto < 2) ? 0 : 11 - resto;
-
-            return Character.getNumericValue(cnpj.charAt(12)) == digito1 &&
-                    Character.getNumericValue(cnpj.charAt(13)) == digito2;
-
-        } catch (Exception e) {
-            return false;
-        }
     }
 
     @Override
