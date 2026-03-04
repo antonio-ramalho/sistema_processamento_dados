@@ -15,8 +15,8 @@ public class Program {
         CreateDirectoriesUtil.creatingDirectories("dados_processados");
         DataExtractionService.executeExtraction();
         ReadingCadopCsvService.readingCompanyFile("dados_brutos/Relatorio_cadop.csv", companies);
-        WritingCadopService.writeCadop(companies);
-        ReadingExpenseCsvService.readingExpenseFile("dados_brutos/1T2025.csv", companies);
-        WritingExpenseService.writeExpense(companies);
+        ReadingExpenseCsvService.readingExpenseFile("dados_brutos/", companies);
+        WritingCadopService.writeCadop(companies, "dados_processados//consolidados.csv");
+        WritingExpenseService.writeExpense(companies, "dados_processados/despesas_agregadas.csv");
     }
 }

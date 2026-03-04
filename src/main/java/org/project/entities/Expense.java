@@ -20,6 +20,31 @@ public class Expense {
         this.year = year;
     }
 
+    public String getQuarter() {
+        if (quarter == 1) {
+            return "1º trimestre";
+        }
+        if (quarter == 4) {
+            return "2º trimestre";
+        }
+        if (quarter == 7) {
+            return "3º trimestre";
+        }
+        return null;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public Integer getYear() {
+        return year;
+    }
+
+    public Double getExpenseValue() {
+        return expenseValue;
+    }
+
     public static String formatString(String description) {
         String companyString = description;
         if (description.endsWith(".") || description.endsWith(" ")) {
@@ -31,10 +56,5 @@ public class Expense {
     public static Double formatDoubleExpense(String expense) {
         String f1 = expense.replace(",", ".");
         return Double.parseDouble(f1);
-    }
-
-    @Override
-    public String toString() {
-        return String.format("%s - %s - %s - %s", description, year, quarter + "º Trimestre", expenseValue);
     }
 }
