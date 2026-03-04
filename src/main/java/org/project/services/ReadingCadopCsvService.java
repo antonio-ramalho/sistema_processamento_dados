@@ -13,6 +13,7 @@ public class ReadingCadopCsvService {
     public static void readingCompanyFile(String path, Map<String, Company> companies) {
 
         try (BufferedReader br = new BufferedReader(new FileReader(path))) {
+            System.out.println("Lendo arquivo: " + path);
             String[] space;
             br.readLine();
             String line;

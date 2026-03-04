@@ -22,12 +22,32 @@ public class Company {
         this.uf = uf;
     }
 
-    public void addDespesa(Expense despesa) {
-        this.despesas.add(despesa);
+    public String getCnpjRegister() {
+        return cnpjRegister;
     }
 
-    public List<Expense> getDespesas() {
+    public String getAnsRegister() {
+        return ansRegister;
+    }
+
+    public String getCompanyName() {
+        return companyName;
+    }
+
+    public String getUf() {
+        return uf;
+    }
+
+    public String getModality() {
+        return modality;
+    }
+
+    public List<Expense> getExpenses() {
         return despesas;
+    }
+
+    public void addDespesa(Expense despesa) {
+        this.despesas.add(despesa);
     }
 
     public static String formatString(String fdf) {
@@ -38,8 +58,28 @@ public class Company {
         return companyString.toUpperCase().replaceAll("\"", "");
     }
 
-    @Override
-    public String toString() {
-        return String.format("%s - %s - %s - %s - %s", cnpjRegister, ansRegister, uf, companyName, modality);
+    public Double sumTotal() {
+        Double sum = 0.0;
+        for (Expense despesa : despesas) {
+            sum += despesa.getExpenseValue();
+        }
+        return sum;
+    }
+
+    public Double averageExpense() {
+        return sumTotal() / despesas.size();
+    }
+
+    public double calcularDesvioPadrao() {
+        if (despesas.isEmpty()) return 0.0;
+        double sumSquares = 0.0;
+
+        for (Expense d : despesas) {
+            double diferenca = d.getExpenseValue() - averageExpense();
+            sumSquares += Math.pow(diferenca, 2);
+        }
+
+        double variance = sumSquares / despesas.size();
+        return Math.sqrt(variance);
     }
 }
