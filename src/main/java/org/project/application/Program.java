@@ -1,11 +1,8 @@
 package org.project.application;
 
 import org.project.entities.Company;
-import org.project.services.DataExtractionService;
-import org.project.services.ReadingCadopCsv;
-import org.project.services.WritingCadopService;
+import org.project.services.*;
 import org.project.utils.CreateDirectoriesUtil;
-
 import java.util.HashMap;
 import java.util.Map;
 
@@ -17,7 +14,9 @@ public class Program {
         CreateDirectoriesUtil.creatingDirectories("dados_brutos");
         CreateDirectoriesUtil.creatingDirectories("dados_processados");
         DataExtractionService.executeExtraction();
-        ReadingCadopCsv.readingCompanyFile("dados_brutos/Relatorio_cadop.csv", companies);
+        ReadingCadopCsvService.readingCompanyFile("dados_brutos/Relatorio_cadop.csv", companies);
         WritingCadopService.writeCadop(companies);
+        ReadingExpenseCsvService.readingExpenseFile("dados_brutos/1T2025.csv", companies);
+        WritingExpenseService.writeExpense(companies);
     }
 }

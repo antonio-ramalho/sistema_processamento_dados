@@ -27,7 +27,7 @@ public class LogService {
     }
 
     public static void logWriter(LogService log) {
-        try (BufferedWriter bw = new BufferedWriter(new FileWriter("registroLog.csv", true))) {
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter("dados_processados/registroLog.csv", true))) {
             bw.write(log.toString());
             bw.newLine();
         } catch (DomainException | IOException e) {

@@ -2,12 +2,13 @@ package org.project.services;
 
 import org.project.entities.Company;
 import org.project.exceptions.DomainException;
+import org.project.utils.DeleteFileUtil;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.Map;
 
-public class ReadingCadopCsv {
+public class ReadingCadopCsvService {
 
     public static void readingCompanyFile(String path, Map<String, Company> companies) {
 
@@ -25,28 +26,10 @@ public class ReadingCadopCsv {
                 String companyUf = Company.formatString(space[10]);
                 String companyModality = Company.formatString(space[4]);
 
-                if (!Company.validateCnpj(companyCNPJ)) {
-                    LogService log = new LogService(companyAns, companyCNPJ, "CNPJ inválido", path);
-                    LogService.logWriter(log);
+                if (!ValidateService.validateCNPJ(companyCNPJ, companyAns, path)
+                || !ValidateService.validadeRazaoSocial(companyName, companyAns, companyCNPJ, path)
+                || !ValidateService.validadeAnsDuplicity(companies, companyAns, companyCNPJ, path))  {
                     continue;
-                }
-
-                if (companyName.isEmpty()) {
-                    LogService log = new LogService(companyAns, companyCNPJ, "Razão social vazia", path);
-                    LogService.logWriter(log);
-                    continue;
-                }
-
-                Company checkCompany = companies.get(companyAns);
-                if (checkCompany != null) {
-                    String razaoAntiga = checkCompany.getCompanyName();
-
-                    if (!razaoAntiga.equalsIgnoreCase(companyName)) {
-                        LogService log = new LogService(companyAns,
-                                companyCNPJ, "Razão social duplicada: "
-                                + razaoAntiga + ":" + companyName, path);
-                        LogService.logWriter(log);
-                    }
                 }
 
                 Company com = new  Company(companyAns, companyCNPJ, companyName, companyModality, companyUf);
@@ -55,6 +38,9 @@ public class ReadingCadopCsv {
         }
         catch (Exception e) {
             throw new DomainException("Não foi possível ler o arquivo: " + path);
+        }
+        finally {
+            DeleteFileUtil.delete(path);
         }
     }
 }
