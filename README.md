@@ -1,5 +1,5 @@
 # Algumas Instruções: 
- - 
+
  - É preciso de o **Java instalado**;
  - Para o programa rodar você deve executar o arquivo **"Program"** (na IDE ou no terminal), que está na packpage **"application"**;
  - Os arquivos vindos da web são baixados e extraídos em uma pasta que é criada automaticamente na pasta na raiz do projeto em seu computador, **"dados_brutos".**
