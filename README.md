@@ -1,4 +1,4 @@
-Algumas Instruções: 
+# Algumas Instruções: 
  - 
  - É preciso de o **Java instalado**;
  - Para o programa rodar você deve executar o arquivo **"Program"** (na IDE ou no terminal), que está na packpage **"application"**;
